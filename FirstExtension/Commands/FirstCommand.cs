@@ -3,7 +3,7 @@
 namespace FirstExtension.Commands
 {
     [Command(PackageIds.FirstCommand)]
-    internal sealed class MyCommand : BaseCommand<MyCommand>
+    internal sealed class FirstCommand : BaseCommand<FirstCommand>
     {
         protected override async Task ExecuteAsync(OleMenuCmdEventArgs e)
         {

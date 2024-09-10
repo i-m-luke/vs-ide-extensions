@@ -1,0 +1,1 @@
+﻿- Vytvořen projekt VisualStudio.Extensibility Extension with VSSDK Compatibility

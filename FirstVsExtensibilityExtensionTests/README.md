@@ -1,0 +1,1 @@
+﻿- Vytvořen projekt pro VisualStudio.Extensibility extension

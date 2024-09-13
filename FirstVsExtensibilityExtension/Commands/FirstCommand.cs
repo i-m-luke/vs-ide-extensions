@@ -18,7 +18,7 @@ namespace FirstVsExtensibilityExtension.Commands
     internal class FirstCommand : Command
     {
         private readonly TraceSource logger;
-        private readonly FirstVsExtensibilityExtension.Services.ITestService testService;
+        private readonly ITestService testService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FirstCommand"/> class.
@@ -26,30 +26,31 @@ namespace FirstVsExtensibilityExtension.Commands
         /// <param name="traceSource">Trace source instance to utilize.</param>
         public FirstCommand(
             TraceSource traceSource, /* Je injektováno pomocí DI; DI je inicializováno v entrypoint (to samé platí pro testService) */
-            FirstVsExtensibilityExtension.Services.ITestService testService)
+            ITestService testService)
         {
             // This optional TraceSource can be used for logging in the command. You can use dependency injection to access
             // other services here as well.
-            this.logger = Requires.NotNull(traceSource, nameof(traceSource));
+            logger = Requires.NotNull(traceSource, nameof(traceSource));
             this.testService = Requires.NotNull(testService, nameof(testService));
         }
 
         /// <inheritdoc />
         public override CommandConfiguration CommandConfiguration
-            => new("%FirstVsExtensibilityExtension.FirstCommand.DisplayName%") // Cesta skrze props json souboru .vsextension\string-resources.json
-            {
-                // Use this object initializer to set optional parameters for the command. The required parameter,
-                // displayName, is set above. DisplayName is localized and references an entry in .vsextension\string-resources.json.
-                Icon = new(ImageMoniker.KnownValues.NewAttribute, IconSettings.IconAndText),
-                Placements = [CommandPlacement.KnownPlacements.ExtensionsMenu], // VsctParent: Umožní integraci i do jiných částí IDE pomocí VSCT?
-                // Podmínky: ActivationConstraint...And() / ...Or() 
-                EnabledWhen = ActivationConstraint.And(
-                    // Command bude enabled při plně načteném solutionu
-                    ActivationConstraint.SolutionState(SolutionState.FullyLoaded),
-                    // Command bude enabled při navolení souboru s příponout ".md"
-                    ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveEditorFileName,
-                        @"\.md$"))
-            };
+            => new(
+                    "%FirstFirstVsExtensibilityExtension.FirstCommand.DisplayName%") // Cesta skrze props json souboru .vsextension\string-resources.json
+                {
+                    // Use this object initializer to set optional parameters for the command. The required parameter,
+                    // displayName, is set above. DisplayName is localized and references an entry in .vsextension\string-resources.json.
+                    Icon = new(ImageMoniker.KnownValues.NewAttribute, IconSettings.IconAndText),
+                    Placements = [CommandPlacement.KnownPlacements.ExtensionsMenu], // VsctParent: Umožní integraci i do jiných částí IDE pomocí VSCT?
+                    // Podmínky: ActivationConstraint...And() / ...Or() 
+                    EnabledWhen = ActivationConstraint.And(
+                        // Command bude enabled při plně načteném solutionu
+                        ActivationConstraint.SolutionState(SolutionState.FullyLoaded),
+                        // Command bude enabled při navolení souboru s příponout ".md"
+                        ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveEditorFileName,
+                            @"\.md$"))
+                };
 
         /// <inheritdoc />
         public override Task InitializeAsync(CancellationToken cancellationToken)
@@ -84,6 +85,15 @@ namespace FirstVsExtensibilityExtension.Commands
 
                 return;
             }
+
+            // NOTE: Stejné jako extension.Shell().Workspace().QuerySolutionAsync()?
+            var workspace = new ProjectQueryableSpace(context.Extensibility.ServiceBroker);
+            //workspace.ProjectsByCapabilities();
+            //workspace.ProjectsByProjectGuid();
+            //workspace.ProjectsByPath();
+            var projects = workspace.ProjectsByProjectGuid().With(p => p.Capabilities);
+            //projects.First().AsQueryable().SubscribeAsync();
+            //projects.First().AsUpdatable().CreateFile();
 
             // Při stisknutí Cancel se provede metoda z injektované služby
             await testService.ShowPromptAsync();

@@ -11,16 +11,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using FirstVsExtensibilityExtension;
-
 namespace FirstVsExtensibilityExtension.Commands
 {
     [VisualStudioContribution]
     internal class CommandWithProgressbar : Command
     {
-        public static string DisplayNamePath = Helpers.CreateStringResourcesPath("CommandsWithProgressBar.DisplayName");
-
-        public override CommandConfiguration CommandConfiguration => new("%FirstVsExtensibilityExtension.CommandWithProgressBar.DisplayName%")
+        public override CommandConfiguration CommandConfiguration => new("%FirstFirstVsExtensibilityExtension.CommandWithProgressBar.DisplayName%")
         {
             Placements = [CommandPlacement.KnownPlacements.ExtensionsMenu],
             Icon = new CommandIconConfiguration(ImageMoniker.KnownValues.AboutBox, IconSettings.IconAndText)
@@ -52,7 +48,7 @@ namespace FirstVsExtensibilityExtension.Commands
                 // ...
             }
 
-            await this.Extensibility.Shell().ShowPromptAsync(":))", PromptOptions.OK, cancellationToken);
+            await Extensibility.Shell().ShowPromptAsync(":))", PromptOptions.OK, cancellationToken);
         }
     }
 }

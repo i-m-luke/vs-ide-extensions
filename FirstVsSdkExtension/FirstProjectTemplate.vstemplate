@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+    <TemplateData>
+    <Name>My Custom Project</Name>
+    <Description>A custom project template.</Description>
+    <ProjectType>CSharp</ProjectType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>MyProject</DefaultName>
+    </TemplateData>
+    <TemplateContent>
+    <Project File="MyCustomProject.csproj" ReplaceParameters="true">
+    <ProjectItem ReplaceParameters="true">Program.cs</ProjectItem>
+    </Project>
+    </TemplateContent>
+</VSTemplate>

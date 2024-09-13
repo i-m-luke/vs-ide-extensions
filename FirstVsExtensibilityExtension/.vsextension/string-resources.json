@@ -1,5 +1,3 @@
 {
-  "SystemTestEditor.FirstCommand.DisplayName": "First Command :)",
-  "SystemTestEditor.CommandWithProgressBar.DisplayName": "With progress bar",
-  "SystemTestEditor.CommandForTesting.DisplayName": "Tested command"
+  "VsExtensibilityExtension.Command1.DisplayName": "Sample Remote Command"
 }

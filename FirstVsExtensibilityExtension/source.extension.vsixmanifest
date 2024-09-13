@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="FirstVsExtensibilityExtension.8c238ac8-ad5f-4a79-8fdc-3852b172e270" Version="1.0" Language="en-US" Publisher="Publisher name" />
+    <Identity Id="FirstVsExtensibilityExtension.df342abb-e512-45f2-a014-c591cd0dca73" Version="1.0" Language="en-US" Publisher="Publisher name" />
     <DisplayName>FirstVsExtensibilityExtension</DisplayName>
     <Description>VisualStudio.Extensibility Extension with VSSDK Compatibility.</Description>
     <Preview>true</Preview>

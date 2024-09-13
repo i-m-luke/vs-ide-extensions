@@ -61,11 +61,11 @@ namespace FirstVsExtensibilityExtension {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Command with progress bar running ....
+        ///   Looks up a localized string similar to Command with progress bar is running ....
         /// </summary>
         internal static string CommandWithProgressBar_Running {
             get {
-                return ResourceManager.GetString("CommandWithProgressBar.Running", resourceCulture);
+                return ResourceManager.GetString("CommandWithProgressBar_Running", resourceCulture);
             }
         }
     }

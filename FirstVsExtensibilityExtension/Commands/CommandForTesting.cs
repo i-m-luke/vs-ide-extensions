@@ -15,9 +15,9 @@ using FirstVsExtensibilityExtension.Services;
 namespace FirstVsExtensibilityExtension.Commands
 {
     [VisualStudioContribution]
-    public class CommandForTesting : Command
+    public class _CommandForTesting : Command
     {
-        private readonly FirstVsExtensibilityExtension.Services.ITestService testService;
+        private readonly ITestService testService;
 
         //public CommandForTesting(ITestService service)
         //    => this.testService = Requires.NotNull(service, nameof(service));
@@ -27,7 +27,7 @@ namespace FirstVsExtensibilityExtension.Commands
             throw new NotImplementedException();
         }
 
-        public override CommandConfiguration CommandConfiguration => new("%FirstVsExtensibilityExtension.CommandForTesting.DisplayName%")
+        public override CommandConfiguration CommandConfiguration => new("%FirstFirstVsExtensibilityExtension.CommandForTesting.DisplayName%")
         {
         };
     }

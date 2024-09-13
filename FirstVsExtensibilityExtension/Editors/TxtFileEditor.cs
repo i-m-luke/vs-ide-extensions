@@ -10,6 +10,7 @@ using Microsoft.VisualStudio.RpcContracts.RemoteUI;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Extensibility.Shell;
+using Microsoft.VisualStudio.Utilities;
 
 namespace FirstVsExtensibilityExtension.Editors
 {
@@ -19,16 +20,25 @@ namespace FirstVsExtensibilityExtension.Editors
 
     // EditorExtensibility.EditAsync: Přístup k aktuálně editovanoho dokumentu
     [VisualStudioContribution]
-    internal class TxtFileEditor : ExtensionPart, ITextViewOpenClosedListener
+    internal class TxtFileEditor : ExtensionPart, ITextViewCreationListener, ITextViewOpenClosedListener, ITextViewChangedListener
     {
         public TextViewExtensionConfiguration TextViewExtensionConfiguration => new()
         {
             AppliesTo = [DocumentFilter.FromGlobPattern("**/*.md", true)]
         };
 
+        public Task TextViewChangedAsync(TextViewChangedArgs args, CancellationToken cancellationToken)
+        {
+            return Task.CompletedTask;
+        }
+
         public Task TextViewClosedAsync(ITextViewSnapshot textView, CancellationToken cancellationToken)
         {
             return Task.CompletedTask;
+        }
+
+        public void TextViewCreated(ITextView textView)
+        {
         }
 
         public async Task TextViewOpenedAsync(ITextViewSnapshot textView, CancellationToken cancellationToken)

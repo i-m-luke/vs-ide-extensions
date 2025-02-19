@@ -16,7 +16,7 @@ namespace FirstVsExtensibilityExtension.Commands
     [VisualStudioContribution]
     internal class CommandWithProgressbar : Command
     {
-        public override CommandConfiguration CommandConfiguration => new("%FirstFirstVsExtensibilityExtension.CommandWithProgressBar.DisplayName%")
+        public override CommandConfiguration CommandConfiguration => new("%CommandWithProgressBar.DisplayName%")
         {
             Placements = [CommandPlacement.KnownPlacements.ExtensionsMenu],
             Icon = new CommandIconConfiguration(ImageMoniker.KnownValues.AboutBox, IconSettings.IconAndText)

@@ -1,6 +1,6 @@
 {
-  "FirstCommand.DisplayName": "FirstCommand :)",
-  "CommandForTesting.DisplayName": "CommandForTesting",
-  "CommandWithProgressBar.DisplayName": "CommandWithProgressBar",
-  "ShowToolWindowCommand.DisplayName":  "ShowToolWindowCommand"
+  "FirstCommand.DisplayName": "FirstVSExt: FirstCommand :)",
+  "CommandForTesting.DisplayName": "FirstVSExt: CommandForTesting",
+  "CommandWithProgressBar.DisplayName": "FirstVSExt: CommandWithProgressBar",
+  "ShowToolWindowCommand.DisplayName": "FirstVSExt: ShowToolWindowCommand"
 }

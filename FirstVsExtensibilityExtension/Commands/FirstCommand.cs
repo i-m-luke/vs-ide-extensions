@@ -37,7 +37,7 @@ namespace FirstVsExtensibilityExtension.Commands
         /// <inheritdoc />
         public override CommandConfiguration CommandConfiguration
             => new(
-                    "%FirstFirstVsExtensibilityExtension.FirstCommand.DisplayName%") // Cesta skrze props json souboru .vsextension\string-resources.json
+                    "%FirstCommand.DisplayName%") // Cesta skrze props json souboru .vsextension\string-resources.json
                 {
                     // Use this object initializer to set optional parameters for the command. The required parameter,
                     // displayName, is set above. DisplayName is localized and references an entry in .vsextension\string-resources.json.

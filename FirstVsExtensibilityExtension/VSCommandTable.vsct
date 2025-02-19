@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<Extern href="stdidcmd.h"/>
+	<Extern href="vsshlids.h"/>
+	<Include href="KnownImageIds.vsct"/>
+	<Include href="VSGlobals.vsct"/>
+
+	<Commands package="FirstVsSdkExtension">
+		<Groups>
+			<!-- Vytvoří menu skupinu s id NewMenuGroup -->
+			<!-- ID se musí nacházet v Symbols -->
+			<Group guid="FirstVsSdkExtension" id="FirstMenuGroup" priority="0x0600">
+				<!-- Menu bude zaintegrováno do hlavního menu (VSMainMenu) a položka menu "Edit" -->
+				<Parent guid="VSMainMenu" id="Edit"/>
+				<!-- Najetím na "Edit" se zobrazí podoba menu-->
+			</Group>
+		</Groups>
+
+		<!--This section defines the elements the user can interact with, like a menu command or a button
+        or combo box in a toolbar. -->
+		<Buttons>
+			<Button guid="FirstVsSdkExtension" id="FirstCommand" priority="0x0100" type="Button">
+				<Parent guid="FirstVsSdkExtension" id="FirstMenuGroup" />
+				<!-- Integrace commandu v podobě tlačítka do menu "NewMenuGroup" -->
+				<Icon guid="ImageCatalogGuid" id="PasteAppend" />
+				<!-- Výběr iconky tlačítka: Lze vybrat z knihovny ikonek; intelisense nabízí možnosti -->
+				<CommandFlag>IconIsMoniker</CommandFlag>
+				<Strings>
+					<ButtonText>FIRST COMMAND</ButtonText>
+					<LocCanonicalName>.FirstVsSdkExtension.MyCommand</LocCanonicalName>
+				</Strings>
+			</Button>
+
+		<Button guid="FirstVsSdkExtension" id="ShowToolWindow" priority="0x0100" type="Button">
+			<Parent guid="VSMainMenu" id="View.DevWindowsGroup.OtherWindows.Group1"/>
+			<Icon guid="ImageCatalogGuid" id="ToolWindow" />
+			<CommandFlag>IconIsMoniker</CommandFlag>
+			<Strings>
+				<ButtonText>Show Tool Window</ButtonText>
+				<LocCanonicalName>.View.ShowToolWindow</LocCanonicalName>
+			</Strings>
+		</Button>
+		</Buttons>
+	</Commands>
+
+	<!-- PackageIds: -->
+	<Symbols>
+		<GuidSymbol name="FirstVsSdkExtension" value="{174a2c23-b994-4125-ba0f-cfedbe88e79c}">
+			<IDSymbol name="FirstMenuGroup" value="0x0001" />
+			<IDSymbol name="FirstCommand" value="0x0100" />
+			<IDSymbol name="ShowToolWindow" value="0x0101" />
+		</GuidSymbol>
+	</Symbols>
+</CommandTable>

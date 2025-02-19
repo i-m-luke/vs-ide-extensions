@@ -18,13 +18,13 @@ namespace FirstVsExtensibilityExtension.Editors
     // ExtensionPart určí exponovanou část extensionu
     // Rozhraní pak určí další specifické vlastnosti části
 
-    // EditorExtensibility.EditAsync: Přístup k aktuálně editovanoho dokumentu
+    // EditorExtensibility.Editor().EditAsync: Přístup k aktuálně editovanoho dokumentu
     [VisualStudioContribution]
-    internal class TxtFileEditor : ExtensionPart, ITextViewCreationListener, ITextViewOpenClosedListener, ITextViewChangedListener
+    internal class MdFileEditor : ExtensionPart, ITextViewCreationListener, ITextViewOpenClosedListener, ITextViewChangedListener
     {
         public TextViewExtensionConfiguration TextViewExtensionConfiguration => new()
         {
-            AppliesTo = [DocumentFilter.FromGlobPattern("**/*.md", true)]
+            AppliesTo = [DocumentFilter.FromGlobPattern("**/*.md", true)],
         };
 
         public Task TextViewChangedAsync(TextViewChangedArgs args, CancellationToken cancellationToken)
@@ -39,6 +39,7 @@ namespace FirstVsExtensibilityExtension.Editors
 
         public void TextViewCreated(ITextView textView)
         {
+            //textView.Close();
         }
 
         public async Task TextViewOpenedAsync(ITextViewSnapshot textView, CancellationToken cancellationToken)

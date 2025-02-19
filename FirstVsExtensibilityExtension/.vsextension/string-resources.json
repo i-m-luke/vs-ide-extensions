@@ -1,3 +1,6 @@
 {
-  "VsExtensibilityExtension.Command1.DisplayName": "Sample Remote Command"
+  "FirstCommand.DisplayName": "FirstCommand :)",
+  "CommandForTesting.DisplayName": "CommandForTesting",
+  "CommandWithProgressBar.DisplayName": "CommandWithProgressBar",
+  "ShowToolWindowCommand.DisplayName":  "ShowToolWindowCommand"
 }
